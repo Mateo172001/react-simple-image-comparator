@@ -1,15 +1,15 @@
 {
   "name": "react-simple-image-comparator",
-  "version": "1.0.16",
+  "version": "1.0.20",
   "description": "The Image Comparison Slider provides a smooth and intuitive way to compare images. With this component, you can easily compare two images using a slider to adjust the visibility of each image, simply provide your two images and start comparing.",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Mateo172001/react-image-comparator.git"
+    "url": "git+https://github.com/Mateo172001/react-simple-image-comparator"
   },
   "keywords": [
     "image",
@@ -20,12 +20,12 @@
     "ui",
     "front-end"
   ],
-  "author": "Mateo Florian",
+  "author": "Mateo172001",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Mateo172001/react-image-comparator/issues"
+    "url": "https://github.com/Mateo172001/react-simple-image-comparator/issues"
   },
-  "homepage": "https://github.com/Mateo172001/react-image-comparator#readme",
+  "homepage": "https://github.com/Mateo172001/react-simple-image-comparator#readme",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
