@@ -1,6 +1,6 @@
 {
   "name": "react-simple-image-comparator",
-  "version": "1.0.20",
+  "version": "1.0.21",
   "description": "The Image Comparison Slider provides a smooth and intuitive way to compare images. With this component, you can easily compare two images using a slider to adjust the visibility of each image, simply provide your two images and start comparing.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
