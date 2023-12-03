@@ -10,7 +10,7 @@ type StylesType = {
 type ImageComparatorProps = {
   firstImg: string;
   secondImg: string;
-  ratio?: string;
+  ratio?: "1/1" | "16/9" | "9/16" | "4/3"| "3/4" | string;
   initiaSliderlValue?: number;
   styles?: StylesType;
 };
@@ -78,6 +78,7 @@ const StyledSliderInput = styled.input`
   touch-action: none;
   position: relative;
   -webkit-appearance: none;
+  appearance: none;
   width: 100%;
   height: 40px;
   top: calc(50% - 20px);
