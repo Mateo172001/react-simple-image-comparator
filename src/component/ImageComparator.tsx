@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import styled from "styled-components";
 
 type StylesType = {
-  firstImg: React.CSSProperties;
-  secondImg: React.CSSProperties;
-  container: React.CSSProperties;
+  firstImg?: React.CSSProperties;
+  secondImg?: React.CSSProperties;
+  container?: React.CSSProperties;
 };
 
 type ImageComparatorProps = {
@@ -15,33 +15,42 @@ type ImageComparatorProps = {
   styles?: StylesType;
 };
 
-function ImageComparator({
-  firstImg,
-  secondImg,
-  ratio = "1/1",
-  initiaSliderlValue = 50,
-  styles = { firstImg: {}, secondImg: {}, container: {} },
-}: ImageComparatorProps) {
-  const [range, setRange] = useState(initiaSliderlValue);
+const ImageComparator = React.memo(
+  ({
+    firstImg,
+    secondImg,
+    ratio = "1/1",
+    initiaSliderlValue = 50,
+    styles,
+  }: ImageComparatorProps) => {
+    const [range, setRange] = useState(initiaSliderlValue);
 
-  const slide = (value: string) => {
-    setRange(parseInt(value));
-  };
+    const slide = useCallback(
+      (value: string) => {
+        setRange(parseInt(value));
+      },
+      [setRange]
+    );
 
-  return (
-    <StyledImageComparator ratio={ratio} style={styles.container}>
-      <img src={firstImg} style={styles.firstImg} />
-      <StyledEditedImage range={range} src={secondImg} style={styles.secondImg} />
-      <StyledSliderInput
-        type="range"
-        min={0}
-        max={100}
-        value={range}
-        onInput={(value) => slide(value.currentTarget.value)}
-      />
-    </StyledImageComparator>
-  );
-}
+    return (
+      <StyledImageComparator ratio={ratio} style={styles?.container}>
+        <img src={firstImg} style={styles?.firstImg} />
+        <StyledEditedImage
+          range={range}
+          src={secondImg}
+          style={styles?.secondImg}
+        />
+        <StyledSliderInput
+          type="range"
+          min={0}
+          max={100}
+          value={range}
+          onInput={(value) => slide(value.currentTarget.value)}
+        />
+      </StyledImageComparator>
+    );
+  }
+);
 
 //Styles
 
