@@ -96,7 +96,7 @@ const StyledSliderInput = styled.input`
   width: 100%;
   height: 40px;
   top: 50%;
-  transform: translateY(-20px);
+  transform: translateY(calc(-50% - 20px));
   background-color: transparent;
   outline: none;
 
