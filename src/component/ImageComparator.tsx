@@ -9,8 +9,10 @@ type StylesType = {
 
 type ImageComparatorProps = {
   firstImg: string;
+  firstImgAlt?: string;
   secondImg: string;
-  ratio?: "1/1" | "16/9" | "9/16" | "4/3"| "3/4" | string;
+  secondImgAlt?: string;
+  ratio?: "1/1" | "16/9" | "9/16" | "4/3" | "3/4" | string;
   initiaSliderlValue?: number;
   styles?: StylesType;
 };
@@ -22,6 +24,8 @@ const ImageComparator = React.memo(
     ratio = "1/1",
     initiaSliderlValue = 50,
     styles,
+    firstImgAlt = "",
+    secondImgAlt = "",
   }: ImageComparatorProps) => {
     const [range, setRange] = useState(initiaSliderlValue);
 
@@ -34,11 +38,12 @@ const ImageComparator = React.memo(
 
     return (
       <StyledImageComparator ratio={ratio} style={styles?.container}>
-        <img src={firstImg} style={styles?.firstImg} />
+        <img src={firstImg} style={styles?.firstImg} alt={firstImgAlt} />
         <StyledEditedImage
           range={range}
           src={secondImg}
           style={styles?.secondImg}
+          alt={secondImgAlt}
         />
         <StyledSliderInput
           type="range"
@@ -67,19 +72,19 @@ const StyledImageComparator = styled.div<StyledImageProps>`
   max-width: 600px;
   margin: 1rem;
   position: relative;
-  aspect-ratio: ${({ratio}) => ratio};
+  aspect-ratio: ${({ ratio }) => ratio};
   overflow: hidden;
   border-radius: 1rem;
   & img {
     width: 100%;
-    aspect-ratio: ${({ratio}) => ratio};
+    aspect-ratio: ${({ ratio }) => ratio};
     object-fit: cover;
     position: absolute;
   }
 `;
 
 const StyledEditedImage = styled.img<StyledEditedImageProps>`
-  clip-path: ${({range}) =>
+  clip-path: ${({ range }) =>
     `polygon(0 0, ${range}% 0, ${range}% 100%, 0 100%)`};
 `;
 
@@ -90,7 +95,8 @@ const StyledSliderInput = styled.input`
   appearance: none;
   width: 100%;
   height: 40px;
-  top: calc(50% - 20px);
+  top: 50%;
+  transform: translateY(-20px);
   background-color: transparent;
   outline: none;
 
